@@ -3,6 +3,7 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center py-3">
             <h2>Posts</h2>
+            <a href="{{ route('admin.posts.create') }}" class="btn btn-primary m-1">Add a new post</a>
         </div>
         <div class="table-responsive">
             <table class="table table-primary">
