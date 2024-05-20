@@ -27,10 +27,51 @@
                             <td>{{ $post->slug }}</td>
                             <td><img width="60" src="{{ $post->image_cover }}" alt=""></td>
                             <td>{{ $post->description }}</td>
-                            <td><a href="{{ route('admin.posts.show', $post) }}" class="btn btn-secondary m-1"><i
+                            <td><a href="{{ route('admin.posts.show', $post) }}" class="btn btn-dark m-1"><i
                                         class="fa fa-eye" aria-hidden="true"></i></a>
-                                /Edit/Delete</td>
+
+                                <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-dark  m-1"><i
+                                        class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <button type="button" class="btn btn-danger  m-1" data-bs-toggle="modal"
+                                    data-bs-target="#modalId-{{ $post->id }}">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+
+                                </button>
+                                <div class="modal fade" id="modalId-{{ $post->id }}" tabindex="-1"
+                                    data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                    aria-labelledby="modalTitleId" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                                        role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalTitleId">
+                                                    Attention! Irreversible operation!
+                                                    Are sure you want to delete {{ $post->title }} ?
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">This is an irreversible operation.
+                                                Are you sure you want to run it?</div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <form action="{{ route('admin.posts.destroy', $post) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">
+                                                        Confirm
+                                                    </button>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
+
                     @empty
 
                         <tr class="">

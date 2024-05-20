@@ -21,8 +21,12 @@ class UpdatePostRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
-            //
+            'title' => 'required|min:10|max:200',
+            'image_cover' => 'nullable|min:30',
+            'description' => 'nullable|max:300'
         ];
+
     }
 }
