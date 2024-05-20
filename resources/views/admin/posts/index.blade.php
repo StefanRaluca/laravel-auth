@@ -26,7 +26,9 @@
                             <td>{{ $post->slug }}</td>
                             <td><img width="60" src="{{ $post->image_cover }}" alt=""></td>
                             <td>{{ $post->description }}</td>
-                            <td>View/Edit/Delete</td>
+                            <td><a href="{{ route('admin.posts.show', $post) }}" class="btn btn-secondary m-1"><i
+                                        class="fa fa-eye" aria-hidden="true"></i></a>
+                                /Edit/Delete</td>
                         </tr>
                     @empty
 
