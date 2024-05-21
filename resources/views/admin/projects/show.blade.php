@@ -3,15 +3,15 @@
     <div class="container py-5">
         <div class="row">
             <div class="col">
-                <h2>{{ $post->title }}</h2>
+                <h2>{{ $project->title }}</h2>
 
-                <img src="{{ $post->image_cover }}" alt="">
+                <img src="{{ $project->image_cover }}" alt="">
             </div>
             <div class="col">
-                <h2>{{ $post->title }}</h2>
-                <p>{{ $post->description }}</p>
+                <h2>{{ $project->title }}</h2>
+                <p>{{ $project->description }}</p>
 
-                <button class="btn btn-primary"><a href="{{ route('admin.posts.index') }}"
+                <button class="btn btn-primary"><a href="{{ route('admin.projects.index') }}"
                         class="text-decoration-none text-white py-3">See All</a>
                 </button>
             </div>

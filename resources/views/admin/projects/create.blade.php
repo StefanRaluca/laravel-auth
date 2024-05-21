@@ -5,7 +5,7 @@
         @include('partials.error')
 
 
-        <form action="{{ route('admin.posts.store') }}" method="post">
+        <form action="{{ route('admin.projects.store') }}" method="post">
             @csrf
 
             <div class="mb-3">
@@ -45,7 +45,7 @@
             <button type="submit" class="btn btn-primary">
                 Create
             </button>
-            <a href="{{ route('admin.posts.index') }}" class="text-decoration-none text-white btn btn-secondary">Back</a>
+            <a href="{{ route('admin.projects.index') }}" class="text-decoration-none text-white btn btn-secondary">Back</a>
 
 
 
