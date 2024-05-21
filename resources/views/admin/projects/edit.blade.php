@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="container">
+    <div class="container p-3">
         <h1>Edit project</h1>
 
         <form action="{{ route('admin.projects.update', $project) }}" method="project">
@@ -22,12 +22,39 @@
             </div>
 
 
+
+
+
+            <div class="mb-3">
+                <label for="start_date" class="form-label">Start date</label>
+                <input type="text" class="form-control" name="start_date" id="start_date"
+                    aria-describedby="start_dateHelper" placeholder="type a date" value="{{ $project->start_date }}" />
+
+            </div>
+            <div class="mb-3">
+                <label for="preview_url" class="form-label">Preview Url</label>
+                <input type="text" class="form-control" name="preview_url" id="preview_url"
+                    aria-describedby="preview_urlHelper" placeholder="https://" value="{{ $project->preview_url }}" />
+
+            </div>
+            <div class="mb-3">
+                <label for="url_code" class="form-label">Url code</label>
+                <input type="text" class="form-control" name="url_code" id="url_code" aria-describedby="url_codeHelper"
+                    placeholder="https://" value="{{ $project->url_code }}" />
+
+            </div>
+            <div class="mb-3">
+                <label for="team_members" class="form-label">Team Members</label>
+                <input type="text" class="form-control" name="team_members" id="team_members"
+                    aria-describedby="team_membersHelper" placeholder="Massimo Rossi"
+                    value="{{ $project->team_members }}" />
+
+            </div>
+
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" name="description" id="description" rows="9">{{ $project->description }}</textarea>
             </div>
-
-
             <button type="submit" class="btn btn-primary" value="Invia">
                 Edit
             </button>

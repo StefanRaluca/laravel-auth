@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="container">
-        <h1>Add a new post</h1>
+    <div class="container p-3">
+        <h1>Add a new project</h1>
         @include('partials.error')
 
 
@@ -15,10 +15,7 @@
                 @error('title')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
-
             </div>
-
-
 
             <div class="mb-3">
                 <label for="image_cover" class="form-label">image_cover</label>
@@ -31,7 +28,45 @@
 
             </div>
 
+            <div class="mb-3">
+                <label for="start_date" class="form-label">start_date</label>
+                <input type="text" class="form-control @error('start_date') is-invalid @enderror" name="start_date"
+                    id="start_date" aria-describedby="start_dateHelper" placeholder="type a date"
+                    value="{{ old('start_date') }}" />
+                @error('start_date')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
 
+            </div>
+            <div class="mb-3">
+                <label for="preview_url" class="form-label">preview_url</label>
+                <input type="text" class="form-control @error('preview_url') is-invalid @enderror" name="preview_url"
+                    id="preview_url" aria-describedby="preview_urlHelper" placeholder="https://"
+                    value="{{ old('preview_url') }}" />
+                @error('preview_url')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+
+            </div>
+            <div class="mb-3">
+                <label for="url_code" class="form-label">url_code</label>
+                <input type="text" class="form-control @error('url_code') is-invalid @enderror" name="url_code"
+                    id="url_code" aria-describedby="url_codeHelper" placeholder="https://" value="{{ old('url_code') }}" />
+                @error('url_code')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+
+            </div>
+            <div class="mb-3">
+                <label for="team_members" class="form-label">team_members</label>
+                <input type="text" class="form-control @error('team_members') is-invalid @enderror" name="team_members"
+                    id="team_members" aria-describedby="team_membersHelper" placeholder="Massimo Rossi"
+                    value="{{ old('team_members') }}" />
+                @error('team_members')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+
+            </div>
 
             <div class="mb-3">
                 <label for="description" class="form-label @error('description') is-invalid @enderror">Description</label>
@@ -45,7 +80,8 @@
             <button type="submit" class="btn btn-primary">
                 Create
             </button>
-            <a href="{{ route('admin.projects.index') }}" class="text-decoration-none text-white btn btn-secondary">Back</a>
+            <a href="{{ route('admin.projects.index') }}"
+                class="text-decoration-none text-white btn btn-secondary">Back</a>
 
 
 
