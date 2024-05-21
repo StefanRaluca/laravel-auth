@@ -36,7 +36,7 @@ class ProjectsController extends Controller
         $slug = Str::of($request->title)->slug('-');
         $validate_date['slug'] = $slug;
         Project::create($validate_date);
-        return to_route('admin.projects.index');
+        return to_route('admin.projects.index')->with('message', "New project it's created!");
     }
 
     /**
@@ -66,7 +66,7 @@ class ProjectsController extends Controller
 
         $project->update($validate_date);
 
-        return to_route('admin.projects.show', $project);
+        return to_route('admin.projects.index')->with('message', "Project $project->title updated!");
     }
 
     /**
@@ -75,6 +75,6 @@ class ProjectsController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return to_route('admin.projects.index');
+        return to_route('admin.projects.index')->with('message', "Project $project->title deleted!");
     }
 }

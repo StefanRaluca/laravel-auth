@@ -3,7 +3,7 @@
     <div class="container p-3">
         <h1>Add a new project</h1>
         @include('partials.error')
-
+        @include('partials.message')
 
         <form action="{{ route('admin.projects.store') }}" method="post">
             @csrf

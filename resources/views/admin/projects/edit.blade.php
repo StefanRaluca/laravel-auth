@@ -2,8 +2,10 @@
 @section('content')
     <div class="container p-3">
         <h1>Edit project</h1>
+        @include('partials.error')
+        @include('partials.message')
 
-        <form action="{{ route('admin.projects.update', $project) }}" method="project">
+        <form action="{{ route('admin.projects.update', $project) }}" method="POST">
 
             @csrf
             @method('PUT')
