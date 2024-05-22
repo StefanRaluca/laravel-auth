@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectsController extends Controller
@@ -34,7 +35,13 @@ class ProjectsController extends Controller
     {
         $validate_date = $request->validated();
         $slug = Str::of($request->title)->slug('-');
+
         $validate_date['slug'] = $slug;
+
+        $img_path = Storage::put('uploads', $request->image_cover);
+
+        $validate_date['image_cover'] = $img_path;
+
         Project::create($validate_date);
         return to_route('admin.projects.index')->with('message', "New project it's created!");
     }

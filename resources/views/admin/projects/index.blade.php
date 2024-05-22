@@ -32,7 +32,16 @@
                             <td scope="row">{{ $project->id }}</td>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->slug }}</td>
-                            <td><img width="60" src="{{ $project->image_cover }}" alt=""></td>
+                            {{--  <td><img width="60" src="{{ $project->image_cover }}" alt=""></td> --}}
+
+                            <td>
+                                @if ($project->image_cover)
+                                    <img width="100" src="{{ asset('storage/' . $project->image_cover) }}"
+                                        alt="{{ $project->title }}">
+                                @else
+                                    N/A
+                                @endif
+                            </td>
                             <td>{{ $project->description }}</td>
                             <td>{{ $project->start_date }}</td>
                             <td><img width="60" src="{{ $project->preview_url }}" alt=""></td>
