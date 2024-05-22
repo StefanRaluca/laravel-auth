@@ -5,7 +5,7 @@
         @include('partials.error')
         @include('partials.message')
 
-        <form action="{{ route('admin.projects.store') }}" method="post">
+        <form action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -17,7 +17,7 @@
                 @enderror
             </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="image_cover" class="form-label">image_cover</label>
                 <input type="text" class="form-control @error('image_cover') is-invalid @enderror" name="image_cover"
                     id="image_cover" aria-describedby="image_coverHelper" placeholder="https://"
@@ -26,6 +26,15 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
 
+            </div> --}}
+
+            <div class="mb-3">
+                <label for="image_cover" class="form-label">Cover Image</label>
+                <input type="file" class="form-control @error('image_cover') is-invalid @enderror " name="image_cover"
+                    id="image_cover" />
+                @error('image_cover')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
