@@ -32,16 +32,27 @@
                             <td scope="row">{{ $project->id }}</td>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->slug }}</td>
-                            {{--  <td><img width="60" src="{{ $project->image_cover }}" alt=""></td> --}}
-
-                            <td>
-                                @if ($project->image_cover)
+                            {{--  <td>
+                                questa non fa vedere le img di faker perchè controlla solo che contenga la stringa uploads per caricare
+                                @if (Str::startsWith($project->image_cover, 'uploads/'))
                                     <img width="100" src="{{ asset('storage/' . $project->image_cover) }}"
                                         alt="{{ $project->title }}">
                                 @else
-                                    N/A
+                                    Nothing to show
+                                @endif
+                            </td> --}}
+                            <td>
+                                @if ($project->image_cover && Str::startsWith($project->image_cover, 'uploads/'))
+                                    <img width="100" src="{{ asset('storage/' . $project->image_cover) }}"
+                                        alt="{{ $project->title }}">
+                                @elseif ($project->image_cover)
+                                    <img width="100" src="{{ $project->image_cover }}" alt="{{ $project->title }}">
+                                @else
+                                    Nothing to show
                                 @endif
                             </td>
+
+
                             <td>{{ $project->description }}</td>
                             <td>{{ $project->start_date }}</td>
                             <td><img width="60" src="{{ $project->preview_url }}" alt=""></td>
