@@ -5,7 +5,7 @@
         @include('partials.error')
         @include('partials.message')
 
-        <form action="{{ route('admin.projects.update', $project) }}" method="POST">
+        <form action="{{ route('admin.projects.update', $project) }}" method="POST" enctype="multipart/form-data">
 
             @csrf
             @method('PUT')
@@ -16,16 +16,18 @@
 
             </div>
 
-            <div class="mb-3">
+            {{--   <div class="mb-3">
                 <label for="image_cover" class="form-label">image_cover</label>
                 <input type="text" class="form-control" name="image_cover" id="image_cover"
                     aria-describedby="image_coverHelper" placeholder="https://" value="{{ $project->image_cover }}" />
 
+            </div> --}}
+
+            <div class="mb-3">
+                <label for="image_cover" class="form-label">Cover Image</label>
+                <input type="file" class="form-control @error('image_cover') is-invalid @enderror " name="image_cover"
+                    id="image_cover" />
             </div>
-
-
-
-
 
             <div class="mb-3">
                 <label for="start_date" class="form-label">Start date</label>

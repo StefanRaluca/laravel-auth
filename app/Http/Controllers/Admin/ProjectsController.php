@@ -70,6 +70,14 @@ class ProjectsController extends Controller
 
 
         $validate_date = $request->validated();
+        if ($request->has('image_cover')) {
+            if ($project->image_cover) {
+                Storage::delete($project->image_cover);
+            }
+
+            $img_path = Storage::put('uploads', $request->image_cover);
+            $validate_date['image_cover'] = $img_path;
+        }
 
         $project->update($validate_date);
 
