@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container p-3">
-        <h1>Add a new project</h1>
+        <h1 class="p-3 bg-dark text-white">Add a new project</h1>
         @include('partials.error')
         @include('partials.message')
 

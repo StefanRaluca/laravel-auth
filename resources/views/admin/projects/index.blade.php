@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="container">
+    <div class="container py-3">
         @include('partials.error')
         @include('partials.message')
 
-        <div class="d-flex justify-content-between align-items-center py-3">
+        <div class="d-flex justify-content-between align-items-center p-3 bg-dark text-white">
             <h2>Projects</h2>
             <a href="{{ route('admin.projects.create') }}" class="btn btn-primary m-1">Add a new project</a>
         </div>
-        <div class="table-responsive">
-            <table class="table table-primary">
+        <div class="table-responsive p-1">
+            <table class="table table-light table-hover">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
